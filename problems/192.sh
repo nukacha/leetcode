@@ -1,0 +1,1 @@
+cat words.txt | tr ' ' '\n' | grep . | sort | uniq -c | sort -rn | sed  's/\(.*\) \(.*\)/\2\1/g' | sed 's/ \{1,\}/ /g'
