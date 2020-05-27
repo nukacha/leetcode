@@ -9,8 +9,11 @@ class Solution:
         set2 = set([dislikes[-1][1]])
         dislikes.pop()
         isolation = None
-        while any(v is not None for v in dislikes):
-            for i, dislike in enumerate(dislikes):
+        flag = True
+        while flag:
+            flag = False
+            for i in range(len(dislikes)):
+                dislike = dislikes[i]
                 if dislike is None:
                     continue
                 elif dislike[0] in set1:
@@ -30,6 +33,10 @@ class Solution:
                     set2.add(dislike[1])
                 elif isolation is None:
                     isolation = i
+                    flag = True
+                    continue
+                else:
+                    flag = True
                     continue
                 isolation = None
                 dislikes[i] = None
